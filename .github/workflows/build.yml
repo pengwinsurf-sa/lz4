@@ -1,0 +1,30 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build
+      run: CFLAGS="--coverage -O0" make test-install 
+    
+    - name: TestA
+      run: CFLAGS="--coverage -O0" make -C tests test-lz4
+    - name: TestB
+      run: CFLAGS="--coverage -O0" make -C tests test-lz4c
+    - name: TestC
+      run: CFLAGS="--coverage -O0" make -C tests test-frametest
+    - name: TestD
+      run: CFLAGS="--coverage -O0" make -C tests test-fuzzer
+
