@@ -100,7 +100,7 @@ install uninstall:
 
 .PHONY: test-install
 test-install:
-	$(MAKE) -j1 install DESTDIR=~/install_test_dir
+	$(MAKE) -j1 install DESTDIR=$(PWD)/install_test_dir
 
 endif   # POSIX_ENV
 
