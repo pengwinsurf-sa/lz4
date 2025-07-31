@@ -30,6 +30,12 @@ jobs:
     # - name: TestD
     #   run: CFLAGS="--coverage -O0" make -C tests test-fuzzer
 
+    - name: 'List install_test_dir contents'
+      run: ls -la $GITHUB_WORKSPACE/install_test_dir
+      
+    - name: 'List usr/local contents'
+      run: ls -la $GITHUB_WORKSPACE/install_test_dir/usr/local
+
     - name: 'ApiCov'
       uses: codesa-ai/ApiCov@v0.3.4-pre
       with:
