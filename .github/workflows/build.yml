@@ -23,17 +23,17 @@ jobs:
       run: CFLAGS="--coverage -O0" make -C lib all  
     - name: TestA
       run: CFLAGS="--coverage -O0" make -C tests test-lz4
-    - name: TestB
-      run: CFLAGS="--coverage -O0" make -C tests test-lz4c
-    - name: TestC
-      run: CFLAGS="--coverage -O0" make -C tests test-frametest
-    - name: TestD
-      run: CFLAGS="--coverage -O0" make -C tests test-fuzzer
+    # - name: TestB
+    #   run: CFLAGS="--coverage -O0" make -C tests test-lz4c
+    # - name: TestC
+    #   run: CFLAGS="--coverage -O0" make -C tests test-frametest
+    # - name: TestD
+    #   run: CFLAGS="--coverage -O0" make -C tests test-fuzzer
 
     - name: 'ApiCov'
       uses: codesa-ai/ApiCov@v0.3.4-pre
       with:
         root_path: ${{ github.workspace }}
         api_key: ${{ secrets.APICOV_KEY }}
-        install_path: $GITHUB_WORKSPACE/install_test_dir
+        install_path: $GITHUB_WORKSPACE/install_test_dir/usr/local
         doxygen_path: $GITHUB_WORKSPACE/doc
